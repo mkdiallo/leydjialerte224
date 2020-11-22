@@ -1,0 +1,41 @@
+{% extends "blogleydji/base.html" %}
+{% load static %}
+{% block content %}
+
+<header class="masthead">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class=" col-md-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                   <img src="{% static 'media/images/boboleydji2.jpg' %}" width="800" height="300" alt="" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+        <div class="row">
+        <!-- Blog Entries Column -->
+            {% for post in post_list %}
+                    <div class="col-md-8 mt-3 left">
+
+                                <div class="card mb-4">
+                                            <div class="card-body">
+                                                        <h2 class="card-title">{{ post.titre }}</h2>
+                                                        <p class="card-text text-muted h6">{{ post.auteur }} | {{ post.created_on}} </p>
+                                                        <p class="card-text">{{post.contenu|slice:":200" }}</p>
+                                                        <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
+                                            </div>
+                                </div>
+
+                    </div>
+               <div class="col-md-4 float-right ">
+                              <div class="cardd my-4">
+                                       <img src="{{post.img.url}}" class="img-fluid" alt="Responsive image">
+                              </div>
+                         </div>
+            {% endfor %}
+         </div>
+</div>
+{% endblock %}

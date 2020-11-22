@@ -1,0 +1,1 @@
+web: gunicorn leydji224.wsgi --log-file -
